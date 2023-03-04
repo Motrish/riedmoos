@@ -1140,7 +1140,7 @@
 		<!--************************************
 				Main End
 		*************************************-->
-frontpage ist geil
+frontpage push test
 <?php
 	get_footer( );
 ?>
