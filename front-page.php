@@ -1140,7 +1140,7 @@
 		<!--************************************
 				Main End
 		*************************************-->
-frontpage push test
+frontpage Sonntag
 <?php
 	get_footer( );
 ?>
