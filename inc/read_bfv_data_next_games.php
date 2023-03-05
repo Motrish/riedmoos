@@ -106,10 +106,6 @@ foreach ($bfvseiten as $url) {
                 // Füge die Teile in umgekehrter Reihenfolge zusammen
                 $datum = "$jahr-$monat-$tag";
 
-
-
-                // $datum = DateTime::createFromFormat('d.m.Y', $datum)->format('Y-m-d');
-                // $uhrzeit = DateTime::createFromFormat('H:i', $uhrzeit)->format('H:i:s');
                 // Hole den Wochentag aus dem Eintrag
                 $day = $xpath->query('.//div[contains(@class, "bfv-matchday-date-time")]/span[1] ', $entry)->item(0)->nodeValue;
                 $day = trim($day);
