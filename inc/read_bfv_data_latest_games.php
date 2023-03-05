@@ -127,8 +127,8 @@ foreach ($bfvseiten as $url) {
 
                 $data = array();
                 // $data['liga'] = $liga;
-                // $data['datum'] = $datum;
-                // $data['uhrzeit'] = $uhrzeit;
+                $data['datum'] = $datum;
+                $data['uhrzeit'] = $uhrzeit;
                 $data['day'] = $day;
                 $data['team0'] = $team0;
                 $data['score0'] = $score0;
