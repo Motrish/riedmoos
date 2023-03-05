@@ -229,17 +229,30 @@ foreach ($bfvseiten as $url) {
       $location2 = trim($location2);
 
 
+      // $data2 = array();
+      // $data2['liga'] = $liga2;
+      // $data2['datum'] = $datum2;
+      // $data2['uhrzeit'] = $uhrzeit2;
+      // $data2['day'] = $day2;
+      // $data2['team0'] = $team02;
+      // $data2['score0'] = $score02;
+      // $data2['score1'] = $score12;
+      // $data2['team1'] = $team12;
+      // $data2['location'] = $location2;
+      // $data2['url'] = $url2;
+      // $wpdb2->insert($table_name2, $data2 );
+
       $data2 = array();
-      $data2['liga'] = $liga2;
-      $data2['datum'] = $datum2;
-      $data2['uhrzeit'] = $uhrzeit2;
-      $data2['day'] = $day2;
-      $data2['team0'] = $team02;
-      $data2['score0'] = $score02;
-      $data2['score1'] = $score12;
-      $data2['team1'] = $team12;
-      $data2['location'] = $location2;
-      $data2['url'] = $url2;
+      $data2['liga'] = 'B-Klasse';
+      $data2['datum'] = '2023-03-12';
+      $data2['uhrzeit'] = '12:00:00';
+      $data2['day'] = 'So.';
+      $data2['team0'] = 'Riedmoos';
+      $data2['score0'] = '4';
+      $data2['score1'] = '2';
+      $data2['team1'] = 'Gegner';
+      $data2['location'] = 'Sportplatz Riedmoos, Kunstrasen | Zum Hirschdamm 3 | 85716 Unterschleißheim';
+      $data2['url'] = 'https://www.bfv.de/mannschaften/sv-riedmoos-ev-1959-ii/016PM67AP4000000VV0AG80NVUT1FLRU';
       $wpdb2->insert($table_name2, $data2 );
 
 
