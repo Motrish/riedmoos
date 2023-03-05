@@ -133,12 +133,12 @@ foreach ($bfvseiten as $url) {
 
                 // Hole Score0 aus dem Eintrag
                 $score0 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__goals--team0")]', $entry)->item(0)->nodeValue;
-                $score0 = trim($score0);
+                #$score0 = trim($score0);
                 $score0 = strtr($score0, $replace_array);
                 $score0 = intval($score0);
                 // Hole Score1 aus dem Eintrag
                 $score1 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__goals--team1")]', $entry)->item(0)->nodeValue;
-                $score1 = trim($score1);
+                #$score1 = trim($score1);
                 $score1 = strtr($score1, $replace_array);
                 $score1 = intval($score1);                
                 // Hole den Ort aus dem Eintrag
