@@ -115,12 +115,32 @@ foreach ($bfvseiten as $url) {
                 // Hole Team1 aus dem Eintrag
                 $team1 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__team-name--team1")]', $entry)->item(0)->nodeValue;
                 $team1 = trim($team1);
+
+                // Replacing Array
+                $replace_array = array(
+                    "" => "1",
+                    "" => "2",
+                    "" => "3",
+                    "" => "4",
+                    "" => "5",
+                    "" => "6",
+                    "" => "7",
+                    "" => "8",
+                    "" => "9",
+                    "" => "0"
+                );
+
+
                 // Hole Score0 aus dem Eintrag
                 $score0 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__goals--team0")]', $entry)->item(0)->nodeValue;
                 $score0 = trim($score0);
+                $score0 = strtr($score0, $replace_array);
+                $score0 = intval($score0);
                 // Hole Score1 aus dem Eintrag
                 $score1 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__goals--team1")]', $entry)->item(0)->nodeValue;
                 $score1 = trim($score1);
+                $score1 = strtr($score1, $replace_array);
+                $score1 = intval($score1);                
                 // Hole den Ort aus dem Eintrag
                 // $location = $xpath->query('.//div[contains(@class, "bfv-spieltag-eintrag__location")]', $entry)->item(0)->nodeValue;
                 // $location = trim($location);
