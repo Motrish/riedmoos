@@ -35,7 +35,6 @@ $sql2 = "CREATE TABLE $table_name2 (
   score0 VARCHAR(250) NOT NULL,
   score1 VARCHAR(250) NOT NULL,
   team1 VARCHAR(250) NOT NULL,
-  location VARCHAR(250) NOT NULL,
   url VARCHAR(255) NOT NULL,
   UNIQUE KEY id (id)
 ) $charset_collate;";
