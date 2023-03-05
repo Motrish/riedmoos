@@ -88,8 +88,8 @@ foreach ($bfvseiten as $url) {
   foreach ($entries as $entry) {
 
                 // Hole die Liga aus dem Eintrag
-                $liga = $xpath->query('.//div[contains(@class, "bfv-spieltag-eintrag__region")]', $entry)->item(0)->nodeValue;
-                $liga = trim($liga);
+                // $liga = $xpath->query('.//div[contains(@class, "bfv-spieltag-eintrag__region")]', $entry)->item(0)->nodeValue;
+                // $liga = trim($liga);
                 // Hole das Datum aus dem Eintrag
                 $datum_uhrzeit = $xpath->query('.//div[contains(@class, "bfv-matchday-date-time")]/span[2]', $entry)->item(0)->nodeValue;
                 $datum_uhrzeit = preg_replace('/\s+/', '', $datum_uhrzeit); // Entfernt alle Leerzeichen
@@ -122,20 +122,20 @@ foreach ($bfvseiten as $url) {
                 $score1 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__goals--team1")]', $entry)->item(0)->nodeValue;
                 $score1 = trim($score1);
                 // Hole den Ort aus dem Eintrag
-                $location = $xpath->query('.//div[contains(@class, "bfv-spieltag-eintrag__location")]', $entry)->item(0)->nodeValue;
-                $location = trim($location);
+                // $location = $xpath->query('.//div[contains(@class, "bfv-spieltag-eintrag__location")]', $entry)->item(0)->nodeValue;
+                // $location = trim($location);
 
 
                 $data = array();
-                $data['liga'] = $liga;
-                $data['datum'] = $datum;
-                $data['uhrzeit'] = $uhrzeit;
+                // $data['liga'] = $liga;
+                // $data['datum'] = $datum;
+                // $data['uhrzeit'] = $uhrzeit;
                 $data['day'] = $day;
                 $data['team0'] = $team0;
                 $data['score0'] = $score0;
                 $data['score1'] = $score1;
                 $data['team1'] = $team1;
-                $data['location'] = $location;
+                // $data['location'] = $location;
                 $data['url'] = $url;
                 $wpdb->insert($table_name2, $data );
 
