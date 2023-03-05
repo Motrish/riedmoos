@@ -150,23 +150,23 @@ foreach ($bfvseiten as $url) {
               // Beitragsdaten zurücksetzen
           #    wp_reset_postdata();
 
-
+// }
     
     
-// ############################
-// Ergebnis letztes Spiel
-// ############################
+//   // ############################
+//   // Ergebnis letztes Spiel
+//   // ############################
 
 
-
+//   foreach ($bfvseiten as $url) {
 
   // Finde alle Einträge mit der Klasse "bfv-spieltag-eintrag"
-  $entry = $xpath->query('.//div[contains(@class, "bfv-statistic__tile-wrapper--team")]');
+  $entry2 = $xpath->query('.//div[contains(@class, "bfv-statistic__tile-wrapper--team")]');
 
   // Durchlaufe alle Einträge und speichere die Daten in die Datenbank (next-games)
 
                 // Hole das Datum aus dem Eintrag
-                $datum_uhrzeit = $xpath->query('.//div[contains(@class, "bfv-matchday-date-time")]/span[2]', $entry)->item(0)->nodeValue;
+                $datum_uhrzeit = $xpath->query('.//div[contains(@class, "bfv-matchday-date-time")]/span[2]', $entry2)->item(0)->nodeValue;
                 $datum_uhrzeit = preg_replace('/\s+/', '', $datum_uhrzeit); // Entfernt alle Leerzeichen
                 $datum_uhrzeit = str_replace("/", " | ", $datum_uhrzeit);
                 $datum_uhrzeit = str_replace('Uhr', '', $datum_uhrzeit);
@@ -186,19 +186,19 @@ foreach ($bfvseiten as $url) {
                 // $datum = DateTime::createFromFormat('d.m.Y', $datum)->format('Y-m-d');
                 // $uhrzeit = DateTime::createFromFormat('H:i', $uhrzeit)->format('H:i:s');
                 // Hole den Wochentag aus dem Eintrag
-                $day = $xpath->query('.//div[contains(@class, "bfv-matchday-date-time")]/span[1] ', $entry)->item(0)->nodeValue;
+                $day = $xpath->query('.//div[contains(@class, "bfv-matchday-date-time")]/span[1] ', $entry2)->item(0)->nodeValue;
                 $day = trim($day);
                 // Hole Team0 aus dem Eintrag
-                $team0 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__team-name--team0")]', $entry)->item(0)->nodeValue;
+                $team0 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__team-name--team0")]', $entry2)->item(0)->nodeValue;
                 $team0 = trim($team0);
                 // Hole Team1 aus dem Eintrag
-                $team1 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__team-name--team1")]', $entry)->item(0)->nodeValue;
+                $team1 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__team-name--team1")]', $entry2)->item(0)->nodeValue;
                 $team1 = trim($team1);
                 // Hole Score0 aus dem Eintrag
-                $score0 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__goals--team0")]', $entry)->item(0)->nodeValue;
+                $score0 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__goals--team0")]', $entry2)->item(0)->nodeValue;
                 $score0 = trim($score0);
                 // Hole Score1 aus dem Eintrag
-                $score1 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__goals--team1")]', $entry)->item(0)->nodeValue;
+                $score1 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__goals--team1")]', $entry2)->item(0)->nodeValue;
                 $score1 = trim($score1);
 
 
@@ -221,7 +221,9 @@ foreach ($bfvseiten as $url) {
               wp_reset_postdata();
 
 }
-    
+ 
+
+}
     
     
     // Cronjob zum Ausführen der Funktion einmal jede Stunde
