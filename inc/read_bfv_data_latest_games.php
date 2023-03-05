@@ -48,50 +48,50 @@ function fetch_latest_games_bfv() {
       }
     
       // Variablen setzen und Tabelle leeren
-      global $wpdb2;     
-      $table_name2 = $wpdb2->prefix . 'latest_games';  
-      $wpdb2->query("TRUNCATE TABLE $table_name2");
-
-
+      global $wpdb;     
+      $table_name2 = $wpdb->prefix . 'latest_games';  
+      $wpdb->query("TRUNCATE TABLE $table_name2");
+    
+    
     ###############################
     # Durchlauf latest Games
     ###############################
           // Durchlaufe alle URLs
-foreach ($bfvseiten as $url2) {
+foreach ($bfvseiten as $url) {
 
   // Initiiere CURL und setze die Optionen
-  $ch2 = curl_init();
-  curl_setopt($ch2, CURLOPT_URL, $url2);
-  curl_setopt($ch2, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($ch2, CURLOPT_CONNECTTIMEOUT, 10);
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
 
   // Hole den HTML-Code der Seite
-  $html2 = curl_exec($ch2);
+  $html = curl_exec($ch);
 
   // Schließe CURL-Verbindung
-  curl_close($ch2);
+  curl_close($ch);
 
   // Erstelle ein neues DOMDocument-Objekt und unterdrücke Fehlermeldungen
-  $dom2 = new DOMDocument();
+  $dom = new DOMDocument();
   libxml_use_internal_errors(true);
 
   // Lade den HTML-Code in das DOMDocument-Objekt
-  $dom2->loadHTML($html2);
+  $dom->loadHTML($html);
 
   // Erstelle ein neues DOMXPath-Objekt für die Abfrage der Daten
-  $xpath2 = new DOMXPath($dom2);
+  $xpath = new DOMXPath($dom);
 
   // Finde alle Einträge mit der Klasse "bfv-spieltag-eintrag"
-  $entries = $xpath2->query('(.//div[contains(@class, "bfv-statistic__tile-wrapper--team")][1]//div[contains(@class, "bfv-result-tile")])[1]');
-  
+  $entries = $xpath->query('//div[contains(@class, "bfv-spieltag-eintrag__match")]');
+
   // Durchlaufe alle Einträge und speichere die Daten in die Datenbank (latest-games)
   foreach ($entries as $entry) {
 
                 // Hole die Liga aus dem Eintrag
-                // $liga = $xpath2->query('.//div[contains(@class, "bfv-spieltag-eintrag__region")]', $entry)->item(0)->nodeValue;
+                // $liga = $xpath->query('.//div[contains(@class, "bfv-spieltag-eintrag__region")]', $entry)->item(0)->nodeValue;
                 // $liga = trim($liga);
                 // Hole das Datum aus dem Eintrag
-                $datum_uhrzeit = $xpath2->query('.//div[contains(@class, "bfv-matchday-date-time")]/span[2]', $entry)->item(0)->nodeValue;
+                $datum_uhrzeit = $xpath->query('.//div[contains(@class, "bfv-matchday-date-time")]/span[2]', $entry)->item(0)->nodeValue;
                 $datum_uhrzeit = preg_replace('/\s+/', '', $datum_uhrzeit); // Entfernt alle Leerzeichen
                 $datum_uhrzeit = str_replace("/", " | ", $datum_uhrzeit);
                 $datum_uhrzeit = str_replace('Uhr', '', $datum_uhrzeit);
@@ -107,37 +107,37 @@ foreach ($bfvseiten as $url2) {
                 $datum = "$jahr-$monat-$tag";
 
                 // Hole den Wochentag aus dem Eintrag
-                $day = $xpath2->query('.//div[contains(@class, "bfv-matchday-date-time")]/span[1] ', $entry)->item(0)->nodeValue;
+                $day = $xpath->query('.//div[contains(@class, "bfv-matchday-date-time")]/span[1] ', $entry)->item(0)->nodeValue;
                 $day = trim($day);
                 // Hole Team0 aus dem Eintrag
-                $team0 = $xpath2->query('.//div[contains(@class, "bfv-matchdata-result__team-name--team0")]', $entry)->item(0)->nodeValue;
+                $team0 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__team-name--team0")]', $entry)->item(0)->nodeValue;
                 $team0 = trim($team0);
                 // Hole Team1 aus dem Eintrag
-                $team1 = $xpath2->query('.//div[contains(@class, "bfv-matchdata-result__team-name--team1")]', $entry)->item(0)->nodeValue;
+                $team1 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__team-name--team1")]', $entry)->item(0)->nodeValue;
                 $team1 = trim($team1);
                 // Hole Score0 aus dem Eintrag
-                $score0 = $xpath2->query('.//div[contains(@class, "bfv-matchdata-result__goals--team0")]', $entry)->item(0)->nodeValue;
+                $score0 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__goals--team0")]', $entry)->item(0)->nodeValue;
                 $score0 = trim($score0);
                 // Hole Score1 aus dem Eintrag
-                $score1 = $xpath2->query('.//div[contains(@class, "bfv-matchdata-result__goals--team1")]', $entry)->item(0)->nodeValue;
+                $score1 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__goals--team1")]', $entry)->item(0)->nodeValue;
                 $score1 = trim($score1);
                 // Hole den Ort aus dem Eintrag
-                // $location = $xpath2->query('.//div[contains(@class, "bfv-spieltag-eintrag__location")]', $entry)->item(0)->nodeValue;
+                // $location = $xpath->query('.//div[contains(@class, "bfv-spieltag-eintrag__location")]', $entry)->item(0)->nodeValue;
                 // $location = trim($location);
 
 
-                $data2 = array();
-                // $data2['liga'] = $liga;
-                $data2['datum'] = $datum;
-                $data2['uhrzeit'] = $uhrzeit;
-                $data2['day'] = $day;
-                $data2['team0'] = $team0;
-                $data2['score0'] = $score0;
-                $data2['score1'] = $score1;
-                $data2['team1'] = $team1;
-                // $data2['location'] = $location;
-                $data2['url'] = $url2;
-                $wpdb2->insert($table_name2, $data2 );
+                $data = array();
+                #$data['liga'] = $liga;
+                $data['datum'] = $datum;
+                $data['uhrzeit'] = $uhrzeit;
+                $data['day'] = $day;
+                $data['team0'] = $team0;
+                $data['score0'] = $score0;
+                $data['score1'] = $score1;
+                $data['team1'] = $team1;
+                #$data['location'] = $location;
+                $data['url'] = $url;
+                $wpdb->insert($table_name2, $data );
 
 
               }
