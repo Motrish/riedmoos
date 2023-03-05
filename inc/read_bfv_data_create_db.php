@@ -30,7 +30,6 @@ $sql2 = "CREATE TABLE $table_name2 (
   datum DATE NOT NULL,
   uhrzeit TIME NOT NULL,     
   day VARCHAR(250) NOT NULL,
-  liga VARCHAR(250) NOT NULL,
   team0 VARCHAR(250) NOT NULL,
   score0 VARCHAR(250) NOT NULL,
   score1 VARCHAR(250) NOT NULL,

@@ -165,10 +165,6 @@ foreach ($bfvseiten as $url) {
 
   // Durchlaufe alle Einträge und speichere die Daten in die Datenbank (next-games)
 
-
-                // Hole die Liga aus dem Eintrag
-                $liga = $xpath->query('.//div[contains(@class, "bfv-spieltag-eintrag__region")]', $entry)->item(0)->nodeValue;
-                $liga = trim($liga);
                 // Hole das Datum aus dem Eintrag
                 $datum_uhrzeit = $xpath->query('.//div[contains(@class, "bfv-matchday-date-time")]/span[2]', $entry)->item(0)->nodeValue;
                 $datum_uhrzeit = preg_replace('/\s+/', '', $datum_uhrzeit); // Entfernt alle Leerzeichen
@@ -209,7 +205,6 @@ foreach ($bfvseiten as $url) {
 
 
                 $data = array();
-                $data['liga'] = $liga;
                 $data['datum'] = $datum;
                 $data['uhrzeit'] = $uhrzeit;
                 $data['day'] = $day;
