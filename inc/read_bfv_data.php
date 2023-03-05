@@ -143,7 +143,7 @@ foreach ($bfvseiten as $url) {
                 $data['team1'] = $team1;
                 $data['location'] = $location;
                 $data['url'] = $url;
-                $wpdb->insert($table_name, $data );
+                $wpdb->insert($table_name2, $data );
 
 
               }
