@@ -1673,6 +1673,7 @@ address { font-style: italic; }
 }
 .tg-pagetitle h1{
 	margin:0;
+	padding-top: 1.2rem;
 	color:#373542;
 	position:relative;
 	font:100px/93px 'Oswald', Arial, Helvetica, sans-serif;

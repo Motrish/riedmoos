@@ -14,7 +14,7 @@ function riedmoos_menus(){
 
 $locations = array(
     'primary_left' => "Desktop Hauptmenu Links",
-    'primary right' => "Desktop Hauptmenü Rechts",
+    'primary_right' => "Desktop Hauptmenü Rechts",
     'primary_mobile' => "Mobiles Hauptmenü",
     'footer'  => "Footer Menu",
 );
