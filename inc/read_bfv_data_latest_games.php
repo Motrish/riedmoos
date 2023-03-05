@@ -129,13 +129,13 @@ foreach ($bfvseiten as $url) {
                 // $data['liga'] = $liga;
                 // $data['datum'] = $datum;
                 // $data['uhrzeit'] = $uhrzeit;
-                $data['day'] = "day";
-                $data['team0'] = "team0";
-                $data['score0'] = "score0";
-                $data['score1'] = "score1";
-                $data['team1'] = "team1";
-                // $data['location'] = "location";
-                $data['url'] = "url";
+                $data['day'] = $day;
+                $data['team0'] = $team0;
+                $data['score0'] = $score0;
+                $data['score1'] = $score1;
+                $data['team1'] = $team1;
+                // $data['location'] = $location;
+                $data['url'] = $url;
                 $wpdb->insert($table_name2, $data );
 
 
