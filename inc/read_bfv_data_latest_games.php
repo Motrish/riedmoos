@@ -83,7 +83,7 @@ foreach ($bfvseiten as $url) {
   $xpath = new DOMXPath($dom);
 
   // Finde alle Einträge mit der Klasse "bfv-spieltag-eintrag"
-  $entry = $xpath->query('(.//div[contains(@class, "bfv-statistic__tile-wrapper--team")][1]//div[contains(@class, "bfv-result-tile")])[1]');
+  $entries = $xpath->query('(.//div[contains(@class, "bfv-statistic__tile-wrapper--team")][1]//div[contains(@class, "bfv-result-tile")])[1]');
 
   // Durchlaufe alle Einträge und speichere die Daten in die Datenbank (latest-games)
   foreach ($entries as $entry) {
