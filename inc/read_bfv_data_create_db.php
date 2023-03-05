@@ -8,7 +8,7 @@ function Spieltage_create_db() {
 	global $wpdb;
 	$charset_collate = $wpdb->get_charset_collate();
 	$table_name = $wpdb->prefix . 'next_games';
-	$table_name = $wpdb->prefix . 'latest_games';
+	$table_name2 = $wpdb->prefix . 'latest_games';
 	$sql = "CREATE TABLE $table_name (
 		  id mediumint(9) NOT NULL AUTO_INCREMENT,
       datum DATE NOT NULL,
