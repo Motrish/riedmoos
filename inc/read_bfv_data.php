@@ -150,18 +150,18 @@ foreach ($bfvseiten as $url) {
               // Beitragsdaten zurücksetzen
           #    wp_reset_postdata();
 
-}
+
     
     
 // ############################
 // Ergebnis letztes Spiel
 // ############################
 
-foreach ($bfvseiten as $url) {
+
 
 
   // Finde alle Einträge mit der Klasse "bfv-spieltag-eintrag"
-  $entries = $xpath->query('.//div[contains(@class, "bfv-statistic__tile-wrapper--team")]');
+  $entry = $xpath->query('.//div[contains(@class, "bfv-statistic__tile-wrapper--team")]');
 
   // Durchlaufe alle Einträge und speichere die Daten in die Datenbank (next-games)
 
