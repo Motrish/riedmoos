@@ -157,12 +157,12 @@ foreach ($bfvseiten as $url) {
     
     
     // Cronjob zum Ausführen der Funktion einmal jede Stunde
-    function rio_schedule_cronjob() {
+    function rio_schedule_latest_cronjob() {
       if ( ! wp_next_scheduled( 'fetch_latest_games' ) ) {
         wp_schedule_event( time(), 'hourly', 'fetch_latest_games' );
       }
     }
-    add_action( 'wp', 'rio_schedule_cronjob' );
+    add_action( 'wp', 'rio_schedule_latest_cronjob' );
     add_action( 'fetch_latest_games', 'fetch_latest_games_bfv' );
     
     
