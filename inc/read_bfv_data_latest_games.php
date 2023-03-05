@@ -7,7 +7,7 @@
 
 
 // Funktion zum Eintrag in die Datenbank
-function fetch_games_bfv() { 
+function fetch_latest_games_bfv() { 
 
 
     // Array zum Speichern der bfvseite Werte
@@ -158,12 +158,12 @@ foreach ($bfvseiten as $url) {
     
     // Cronjob zum Ausführen der Funktion einmal jede Stunde
     function rio_schedule_cronjob() {
-      if ( ! wp_next_scheduled( 'fetch_hourly_games' ) ) {
-        wp_schedule_event( time(), 'hourly', 'fetch_hourly_games' );
+      if ( ! wp_next_scheduled( 'fetch_latest_games' ) ) {
+        wp_schedule_event( time(), 'hourly', 'fetch_latest_games' );
       }
     }
     add_action( 'wp', 'rio_schedule_cronjob' );
-    add_action( 'fetch_hourly_games', 'fetch_games_bfv' );
+    add_action( 'fetch_latest_games', 'fetch_latest_games_bfv' );
     
     
     ?>
