@@ -2,7 +2,9 @@
   "extends": [
     "development"
   ],
-  "hints": {
-    "compat-api/css": "off"
-  }
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not samsung <= 20"
+  ]
 }
