@@ -244,8 +244,8 @@ foreach ($bfvseiten as $url) {
 
       $data2 = array();
       $data2['liga'] = 'B-Klasse';
-      $data2['datum'] = '2023-03-12';
-      $data2['uhrzeit'] = '12:00:00';
+      $data2['datum'] = '';
+      $data2['uhrzeit'] = '';
       $data2['day'] = 'So.';
       $data2['team0'] = 'Riedmoos';
       $data2['score0'] = '4';
