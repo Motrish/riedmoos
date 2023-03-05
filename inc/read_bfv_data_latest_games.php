@@ -124,14 +124,14 @@ foreach ($bfvseiten as $url) {
 
 
                 $data = array();
-                $data['datum'] = $datum;
-                $data['uhrzeit'] = $uhrzeit;
-                $data['day'] = $day;
-                $data['team0'] = $team0;
-                $data['score0'] = $score0;
-                $data['score1'] = $score1;
-                $data['team1'] = $team1;
-                $data['url'] = $url;
+                $data['datum'] = '2023-03-10';
+                $data['uhrzeit'] = '12:00:00';
+                $data['day'] = 'day';
+                $data['team0'] = 'team0';
+                $data['score0'] = 'score0';
+                $data['score1'] = 'score1';
+                $data['team1'] = 'team1';
+                $data['url'] = 'url';
                 $wpdb->insert($table_name2, $data );
 
 
