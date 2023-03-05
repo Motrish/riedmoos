@@ -48,9 +48,9 @@ function fetch_latest_games_bfv() {
       }
     
       // Variablen setzen und Tabelle leeren
-      global $wpdb;     
-      $table_name2 = $wpdb->prefix . 'latest_games';  
-      $wpdb->query("TRUNCATE TABLE $table_name");
+      global $wpdb2;     
+      $table_name2 = $wpdb2->prefix . 'latest_games';  
+      $wpdb2->query("TRUNCATE TABLE $table_name");
 
     
     
@@ -123,16 +123,16 @@ foreach ($bfvseiten as $url) {
 
 
 
-                $data = array();
+                $data2 = array();
                 // $data['datum'] = '2023-03-10';
                 // $data['uhrzeit'] = '12:00:00';
-                $data['day'] = 'day';
-                $data['team0'] = 'team0';
-                $data['score0'] = 'score0';
-                $data['score1'] = 'score1';
-                $data['team1'] = 'team1';
-                $data['url'] = 'url';
-                $wpdb->insert($table_name2, $data );
+                $data2['day'] = 'day';
+                $data2['team0'] = 'team0';
+                $data2['score0'] = 'score0';
+                $data2['score1'] = 'score1';
+                $data2['team1'] = 'team1';
+                $data2['url'] = 'url';
+                $wpdb2->insert($table_name2, $data2 );
 
 
               }
