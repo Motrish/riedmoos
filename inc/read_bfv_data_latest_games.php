@@ -124,8 +124,8 @@ foreach ($bfvseiten as $url) {
 
 
                 $data = array();
-                $data['datum'] = '2023-03-10';
-                $data['uhrzeit'] = '12:00:00';
+                // $data['datum'] = '2023-03-10';
+                // $data['uhrzeit'] = '12:00:00';
                 $data['day'] = 'day';
                 $data['team0'] = 'team0';
                 $data['score0'] = 'score0';
