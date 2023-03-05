@@ -51,6 +51,12 @@ function fetch_latest_games_bfv() {
       global $wpdb;     
       $table_name2 = $wpdb->prefix . 'latest_games';  
       $wpdb->query("TRUNCATE TABLE $table_name2");
+
+
+
+
+
+
     
     
     ###############################
