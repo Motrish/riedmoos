@@ -7,7 +7,7 @@
 
 
 // Funktion zum Eintrag in die Datenbank
-function fetch_next_games_bfv() { 
+function fetch_latest_games_bfv() { 
 
 
     // Array zum Speichern der bfvseite Werte
@@ -49,12 +49,13 @@ function fetch_next_games_bfv() {
     
       // Variablen setzen und Tabelle leeren
       global $wpdb;     
-      $table_name = $wpdb->prefix . 'next_games';  
+      $table_name2 = $wpdb->prefix . 'latest_games';  
       $wpdb->query("TRUNCATE TABLE $table_name");
+
     
     
     ###############################
-    # Durchlauf Next Games
+    # Durchlauf latest Games
     ###############################
           // Durchlaufe alle URLs
 foreach ($bfvseiten as $url) {
@@ -84,12 +85,10 @@ foreach ($bfvseiten as $url) {
   // Finde alle Einträge mit der Klasse "bfv-spieltag-eintrag"
   $entries = $xpath->query('//div[contains(@class, "bfv-spieltag-eintrag__match")]');
 
-  // Durchlaufe alle Einträge und speichere die Daten in die Datenbank (next-games)
+  // Durchlaufe alle Einträge und speichere die Daten in die Datenbank (latest-games)
   foreach ($entries as $entry) {
 
-                // Hole die Liga aus dem Eintrag
-                $liga = $xpath->query('.//div[contains(@class, "bfv-spieltag-eintrag__region")]', $entry)->item(0)->nodeValue;
-                $liga = trim($liga);
+
                 // Hole das Datum aus dem Eintrag
                 $datum_uhrzeit = $xpath->query('.//div[contains(@class, "bfv-matchday-date-time")]/span[2]', $entry)->item(0)->nodeValue;
                 $datum_uhrzeit = preg_replace('/\s+/', '', $datum_uhrzeit); // Entfernt alle Leerzeichen
@@ -125,13 +124,10 @@ foreach ($bfvseiten as $url) {
                 // Hole Score1 aus dem Eintrag
                 $score1 = $xpath->query('.//div[contains(@class, "bfv-matchdata-result__goals--team1")]', $entry)->item(0)->nodeValue;
                 $score1 = trim($score1);
-                // Hole den Ort aus dem Eintrag
-                $location = $xpath->query('.//div[contains(@class, "bfv-spieltag-eintrag__location")]', $entry)->item(0)->nodeValue;
-                $location = trim($location);
+
 
 
                 $data = array();
-                $data['liga'] = $liga;
                 $data['datum'] = $datum;
                 $data['uhrzeit'] = $uhrzeit;
                 $data['day'] = $day;
@@ -139,9 +135,8 @@ foreach ($bfvseiten as $url) {
                 $data['score0'] = $score0;
                 $data['score1'] = $score1;
                 $data['team1'] = $team1;
-                $data['location'] = $location;
                 $data['url'] = $url;
-                $wpdb->insert($table_name, $data );
+                $wpdb->insert($table_name2, $data );
 
 
               }
@@ -155,13 +150,13 @@ foreach ($bfvseiten as $url) {
     
     
     // Cronjob zum Ausführen der Funktion einmal jede Stunde
-    function rio_schedule_next_cronjob() {
-      if ( ! wp_next_scheduled( 'fetch_next_games' ) ) {
-        wp_schedule_event( time(), 'hourly', 'fetch_next_games' );
+    function rio_schedule_latest_cronjob() {
+      if ( ! wp_latest_scheduled( 'fetch_latest_games' ) ) {
+        wp_schedule_event( time(), 'hourly', 'fetch_latest_games' );
       }
     }
-    add_action( 'wp', 'rio_schedule_next_cronjob' );
-    add_action( 'fetch_next_games', 'fetch_next_games_bfv' );
+    add_action( 'wp', 'rio_schedule_latest_cronjob' );
+    add_action( 'fetch_latest_games', 'fetch_latest_games_bfv' );
     
     
     ?>
