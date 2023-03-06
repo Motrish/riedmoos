@@ -491,7 +491,7 @@ $next_game = $wpdb->get_row( "
     SELECT * 
     FROM $table_name 
 	WHERE url = '$url'
-    WHERE datum >= '$now'
+    AND datum >= '$now'
     ORDER BY datum ASC
     LIMIT 1
 " );
