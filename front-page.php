@@ -490,11 +490,11 @@ $now = date( 'Y-m-d H:i:s' );
 $next_game = $wpdb->get_row( "
     SELECT * 
     FROM $table_name 
-	WHERE url = %s
+	WHERE url = '$url'
     WHERE datum >= '$now'
     ORDER BY datum ASC
     LIMIT 1
-",$url );
+" );
 
 if ( $next_game ) {
     echo $next_game->liga . ' - ' . $next_game->team0 . ' vs ' . $next_game->team1 . ' am ' . $next_game->datum . ' um ' . $next_game->uhrzeit . ' in ' . $next_game->location;
