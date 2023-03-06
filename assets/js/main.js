@@ -105,7 +105,7 @@ $(document).ready(function() {
 			MATCH COUNTER
 	------------------------------------------*/
 function matchCounter() {
-  var launch = new Date('<?php echo $datum; ?> <?php echo $uhrzeit; ?>');
+  var launch = new Date('<?php echo $datum.' '.$uhrzeit; ?>');
   var days = $('.tg-days');
   var hours = $('.tg-hours');
   var minutes = $('.tg-minutes');

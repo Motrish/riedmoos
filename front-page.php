@@ -501,8 +501,8 @@ if ( $next_game ) {
 	$team0 = $next_game->team0;
 	$team1 = $next_game->team1;
 	$location = $next_game->location;
-	$datum = date_i18n('j. F Y', strtotime($next_game->datum));
-	$uhrzeit = date_i18n('H:i', strtotime($next_game->uhrzeit));
+	$datum = date('Y/m/d', strtotime($next_game->datum));
+	$uhrzeit = date('H:i:s', strtotime($next_game->uhrzeit));
 
 	echo '<script>var nextMatchDate = new Date("'.$next_game->datum.' '.$next_game->uhrzeit.'");</script>';
 }
