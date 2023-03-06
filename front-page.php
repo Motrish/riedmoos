@@ -481,7 +481,40 @@
 			<!--************************************
 					Upcoming Match Start
 			*************************************-->
-			<section class=" tg-haslayout tg-bgstyleone">
+			<?php
+				global $wpdb;
+				$table_name = $wpdb->prefix . "next_games";
+				$current_date = current_time('Y-m-d H:i:s');
+				$next_game = $wpdb->get_row("
+					SELECT *
+					FROM $table_name
+					WHERE datum >= '$current_date'
+					ORDER BY datum ASC
+					LIMIT 1
+				");
+
+				// führe die Abfrage aus
+				$next_game = $wpdb->get_row($next_game_query);
+
+				// überprüfe, ob ein Termin gefunden wurde
+				if ($next_game) {
+					$liga = $next_game->liga;
+					$team0 = $next_game->team0;
+					$team1 = $next_game->team1;
+					$location = $next_game->location;
+					$datum = date_i18n('j. F Y', strtotime($next_game->datum));
+					$uhrzeit = date_i18n('H:i', strtotime($next_game->uhrzeit));
+				} else {
+					// Füge hier den Code ein, um anzuzeigen, dass kein Spiel gefunden wurde
+					$liga = '';
+					$team0 = '';
+					$team1 = '';
+					$location = '';
+					$datum = '';
+					$uhrzeit = '';
+				}
+			?>
+			<section class="tg-haslayout tg-bgstyleone">
 				<div class="tg-bgboxone"></div>
 				<div class="tg-bgboxtwo"></div>
 				<div class="tg-bgpattrant">
@@ -495,9 +528,9 @@
 								</div>
 								<div class="col-md-8 col-sm-8 col-xs-12">
 									<div class="tg-contentbox">
-										<div class="tg-section-heading"><h2>Gladiators <span>VS</span> Horned Frogs</h2></div>
+										<div class="tg-section-heading"><h2><?php echo $team0; ?><span>gegen</span> <?php echo $team1; ?></h2></div>
 										<div class="tg-description">
-											<p>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minimam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+											<p><?php echo $datum; ?></p><p><?php echo $uhrzeit; ?></p><p><?php echo $location; ?></p><p><?php echo $liga; ?></p>
 										</div>
 										<div class="tg-counters">
 											<div class="tg-counter tg-days"></div>
@@ -519,6 +552,7 @@
 			<!--************************************
 					Upcoming Match End
 			*************************************-->
+
 			<section class="tg-main-section tg-haslayout">
 				<div class="container">
 					<div class="tg-section-name">
