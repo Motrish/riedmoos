@@ -497,7 +497,43 @@ $next_game = $wpdb->get_row( "
 " );
 
 if ( $next_game ) {
-    echo $next_game->liga . ' - ' . $next_game->team0 . ' vs ' . $next_game->team1 . ' am ' . $next_game->datum . ' um ' . $next_game->uhrzeit . ' in ' . $next_game->location;
+echo '
+			<section class="tg-haslayout tg-bgstyleone">
+				<div class="tg-bgboxone"></div>
+				<div class="tg-bgboxtwo"></div>
+				<div class="tg-bgpattrant">
+					<div class="container">
+						<div class="row">
+							<div class="tg-upcomingmatch-counter">
+								<div class="col-md-4 col-sm-4 col-xs-12 hidden-xs">
+									<figure>
+										<img src="<?php echo get_template_directory_uri(  ) . "/assets/images/img-02.png" ?>"alt="image description">
+									</figure>
+								</div>
+								<div class="col-md-8 col-sm-8 col-xs-12">
+									<div class="tg-contentbox">
+										<div class="tg-section-heading"><h2>' . $next_game->team0 . '<span> gegen </span>' . $next_game->team1 . '</h2></div>
+										<div class="tg-description">
+											<p>' . $next_game->datum . '</p><p>' . $next_game->uhrzeit . '</p><p>' . $next_game->location .'</p><p>' . $next_game->liga . '</p>
+										</div>
+										<div class="tg-counters">
+											<div class="tg-counter tg-days"></div>
+											<div class="tg-counter tg-hours"></div>
+											<div class="tg-counter tg-minutes"></div>
+											<div class="tg-counter tg-seconds"></div>
+										</div>
+										<div class="tg-btnbox">
+											<a class="tg-btn" href="#"><span>read more</span></a>
+											<a class="tg-btn" href="#"><span>book my ticket</span></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>';
+
 }
 
 
@@ -540,41 +576,7 @@ if ( $next_game ) {
 				// echo $uhrzeit;
 				// echo $location;
 			?>
-			<!-- <section class="tg-haslayout tg-bgstyleone">
-				<div class="tg-bgboxone"></div>
-				<div class="tg-bgboxtwo"></div>
-				<div class="tg-bgpattrant">
-					<div class="container">
-						<div class="row">
-							<div class="tg-upcomingmatch-counter">
-								<div class="col-md-4 col-sm-4 col-xs-12 hidden-xs">
-									<figure>
-										<img src="<?php echo get_template_directory_uri(  ) . "/assets/images/img-02.png" ?>"alt="image description">
-									</figure>
-								</div>
-								<div class="col-md-8 col-sm-8 col-xs-12">
-									<div class="tg-contentbox">
-										<div class="tg-section-heading"><h2><?php echo $team0; ?><span>gegen</span> <?php echo $team1; ?></h2></div>
-										<div class="tg-description">
-											<p><?php echo $datum; ?></p><p><?php echo $uhrzeit; ?></p><p><?php echo $location; ?></p><p><?php echo $liga; ?></p>
-										</div>
-										<div class="tg-counters">
-											<div class="tg-counter tg-days"></div>
-											<div class="tg-counter tg-hours"></div>
-											<div class="tg-counter tg-minutes"></div>
-											<div class="tg-counter tg-seconds"></div>
-										</div>
-										<div class="tg-btnbox">
-											<a class="tg-btn" href="#"><span>read more</span></a>
-											<a class="tg-btn" href="#"><span>book my ticket</span></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section> -->
+
 			<!--************************************
 					Upcoming Match End
 			*************************************-->
