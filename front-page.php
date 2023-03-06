@@ -515,6 +515,7 @@
 					$datum = '12.23.23';
 					$uhrzeit = '19:00';
 				}
+				echo $table_name;
 			?>
 			<section class="tg-haslayout tg-bgstyleone">
 				<div class="tg-bgboxone"></div>
