@@ -485,7 +485,7 @@
 
 global $wpdb;
 $table_name = $wpdb->prefix . 'next_games';
-$url = 'https://www.bfv.de/mannschaften/sv-riedmoos-ev/016PB2OPTC000000VV0AG811VTE5EA5Ra'; // Hier die gewünschte URL einfügen
+$url = 'https://www.bfv.de/mannschaften/sv-riedmoos-ev/016PB2OPTC000000VV0AG811VTE5EA5R'; // Hier die gewünschte URL einfügen
 $now = date( 'Y-m-d H:i:s' );
 $next_game = $wpdb->get_row( "
     SELECT * 
