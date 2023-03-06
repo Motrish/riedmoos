@@ -503,6 +503,8 @@ if ( $next_game ) {
 	$location = $next_game->location;
 	$datum = date_i18n('j. F Y', strtotime($next_game->datum));
 	$uhrzeit = date_i18n('H:i', strtotime($next_game->uhrzeit));
+
+	echo '<script>var nextMatchDate = new Date("'.$next_game->datum.' '.$next_game->uhrzeit.'");</script>';
 }
 ?>
 <section class="tg-haslayout tg-bgstyleone">
