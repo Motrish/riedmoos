@@ -1,8 +1,8 @@
 <?php
 
-foreach ( glob( get_template_directory() . '/inc/*.php' ) as $file ) {
+foreach ( glob( get_template_directory() . '/inc/!(dni_)*.php' ) as $file ) {
   require_once $file;
-}
+  }
 
 
 
