@@ -516,6 +516,12 @@
 					$uhrzeit = '19:00';
 				}
 				echo $table_name;
+				echo $url;
+				echo $team0;
+				echo $team1;
+				echo $datum;
+				echo $uhrzeit;
+				echo $location;
 			?>
 			<section class="tg-haslayout tg-bgstyleone">
 				<div class="tg-bgboxone"></div>
