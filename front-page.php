@@ -508,12 +508,12 @@
 					$uhrzeit = date_i18n('H:i', strtotime($next_game->uhrzeit));
 				} else {
 					// Füge hier den Code ein, um anzuzeigen, dass kein Spiel gefunden wurde
-					$liga = '';
-					$team0 = '';
-					$team1 = '';
-					$location = '';
-					$datum = '';
-					$uhrzeit = '';
+					$liga = 'bfv';
+					$team0 = 'svr';
+					$team1 = 'svl';
+					$location = 'heim';
+					$datum = '12.23.23';
+					$uhrzeit = '19:00';
 				}
 			?>
 			<section class="tg-haslayout tg-bgstyleone">
