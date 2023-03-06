@@ -482,46 +482,55 @@
 					Upcoming Match Start
 			*************************************-->
 			<?php
-				global $wpdb;
-				$table_name = $wpdb->prefix . "next_games";
-				#$current_date = current_time('Y-m-d');
-				#$url = 'https://www.bfv.de/mannschaften/sv-riedmoos-ev/016PB2OPTC000000VV0AG811VTE5EA5Ra'; // Hier die gewünschte URL einfügen
-				$next_game = $wpdb->get_row("
-					SELECT *
-					FROM $table_name
-					ORDER BY datum ASC
-					LIMIT 1
-				" );
 
-				// führe die Abfrage aus
-				$next_game = $wpdb->get_row($next_game_query);
+global $wpdb;
+$table_name = $wpdb->prefix . 'next_games';
+$rows = $wpdb->get_results( "SELECT * FROM $table_name" );
+foreach ( $rows as $row ) {
+    echo $row->liga . ' - ' . $row->team0 . ' vs ' . $row->team1 . ' am ' . $row->datum . ' um ' . $row->uhrzeit . ' in ' . $row->location . '<br />';
+}
 
-				// überprüfe, ob ein Termin gefunden wurde
-				if ($next_game) {
-					$liga = $next_game->liga;
-					$team0 = $next_game->team0;
-					$team1 = $next_game->team1;
-					$location = $next_game->location;
-					$datum = date_i18n('j. F Y', strtotime($next_game->datum));
-					$uhrzeit = date_i18n('H:i', strtotime($next_game->uhrzeit));
-				} else {
-					// Füge hier den Code ein, um anzuzeigen, dass kein Spiel gefunden wurde
-					$liga = 'bfv';
-					$team0 = 'svr';
-					$team1 = 'svl';
-					$location = 'heim';
-					$datum = '12.23.23';
-					$uhrzeit = '19:00';
-				}
-				echo $table_name;
-				echo $url;
-				echo $team0;
-				echo $team1;
-				echo $datum;
-				echo $uhrzeit;
-				echo $location;
+
+				// global $wpdb;
+				// $table_name = $wpdb->prefix . "next_games";
+				// #$current_date = current_time('Y-m-d');
+				// #$url = 'https://www.bfv.de/mannschaften/sv-riedmoos-ev/016PB2OPTC000000VV0AG811VTE5EA5Ra'; // Hier die gewünschte URL einfügen
+				// $next_game = $wpdb->get_row("
+				// 	SELECT *
+				// 	FROM $table_name
+				// 	ORDER BY datum ASC
+				// 	LIMIT 1
+				// " );
+
+				// // führe die Abfrage aus
+				// $next_game = $wpdb->get_row($next_game_query);
+
+				// // überprüfe, ob ein Termin gefunden wurde
+				// if ($next_game) {
+				// 	$liga = $next_game->liga;
+				// 	$team0 = $next_game->team0;
+				// 	$team1 = $next_game->team1;
+				// 	$location = $next_game->location;
+				// 	$datum = date_i18n('j. F Y', strtotime($next_game->datum));
+				// 	$uhrzeit = date_i18n('H:i', strtotime($next_game->uhrzeit));
+				// } else {
+				// 	// Füge hier den Code ein, um anzuzeigen, dass kein Spiel gefunden wurde
+				// 	$liga = 'bfv';
+				// 	$team0 = 'svr';
+				// 	$team1 = 'svl';
+				// 	$location = 'heim';
+				// 	$datum = '12.23.23';
+				// 	$uhrzeit = '19:00';
+				// }
+				// echo $table_name;
+				// echo $url;
+				// echo $team0;
+				// echo $team1;
+				// echo $datum;
+				// echo $uhrzeit;
+				// echo $location;
 			?>
-			<section class="tg-haslayout tg-bgstyleone">
+			<!-- <section class="tg-haslayout tg-bgstyleone">
 				<div class="tg-bgboxone"></div>
 				<div class="tg-bgboxtwo"></div>
 				<div class="tg-bgpattrant">
@@ -555,7 +564,7 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> -->
 			<!--************************************
 					Upcoming Match End
 			*************************************-->
