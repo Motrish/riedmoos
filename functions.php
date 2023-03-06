@@ -1,6 +1,11 @@
 <?php
 
-foreach ( glob( get_template_directory() . '/inc/!(dni_)*.php' ) as $file ) {
+foreach (glob(get_template_directory() . '/inc/*.php') as $file) {
+  // Exclude files that start with "dni_"
+  if (strpos(basename($file), 'dni_') === 0) {
+  continue;
+  }
+  // Load the PHP file
   require_once $file;
   }
 
