@@ -481,110 +481,44 @@
 			<!--************************************
 					Upcoming Match Start
 			*************************************-->
-			<?php
-
-global $wpdb;
-$table_name = $wpdb->prefix . 'next_games';
-$url = 'https://www.bfv.de/mannschaften/sv-riedmoos-ev/016PB2OPTC000000VV0AG811VTE5EA5R'; // Hier die gewünschte URL einfügen
-$now = date( 'Y-m-d H:i:s' );
-$next_game = $wpdb->get_row( "
-    SELECT * 
-    FROM $table_name 
-	WHERE url = '$url'
-    AND datum >= '$now'
-    ORDER BY datum ASC
-    LIMIT 1
-" );
-
-if ( $next_game ) {
-	$liga = $next_game->liga;
-	$team0 = $next_game->team0;
-	$team1 = $next_game->team1;
-	$location = $next_game->location;
-	$datum = date('Y/m/d', strtotime($next_game->datum));
-	$uhrzeit = date('H:i:s', strtotime($next_game->uhrzeit));
-
-	echo '<script>var nextMatchDate = new Date("'.$next_game->datum.' '.$next_game->uhrzeit.'");</script>';
-}
-?>
-<section class="tg-haslayout tg-bgstyleone">
-<div class="tg-bgboxone"></div>
-<div class="tg-bgboxtwo"></div>
-<div class="tg-bgpattrant">
-	<div class="container">
-		<div class="row">
-			<div class="tg-upcomingmatch-counter">
-				<div class="col-md-4 col-sm-4 col-xs-12 hidden-xs">
-					<figure>
-						<img src="<?php echo get_template_directory_uri(  ) . "/assets/images/img-02.png" ?>"alt="image description">
-					</figure>
-				</div>
-				<div class="col-md-8 col-sm-8 col-xs-12">
-					<div class="tg-contentbox">
-						<div class="tg-section-heading"><h2><?php echo $team0; ?><span><?php echo __(' gegen ','theme'); ?></span><?php echo $team1; ?></h2></div>
-						<div class="tg-description">
-							<p><?php echo $datum; ?></p><p><?php echo $uhrzeit; ?></p><p><?php echo $location; ?></p><p><?php echo $liga; ?></p>
-						</div>
-						<div class="tg-counters">
-							<div class="tg-counter tg-days"></div>
-							<div class="tg-counter tg-hours"></div>
-							<div class="tg-counter tg-minutes"></div>
-							<div class="tg-counter tg-seconds"></div>
-						</div>
-						<div class="tg-btnbox">
-							<a class="tg-btn" href="<?php echo esc_url( get_permalink( get_page_by_title( 'Match Details' ) ) ); ?>"><span><?php echo __('read more', 'theme'); ?></span></a>
-							<a class="tg-btn" href="#"><span><?php echo __('book my ticket', 'theme'); ?></span></a>
+			<section class=" tg-haslayout tg-bgstyleone">
+				<div class="tg-bgboxone"></div>
+				<div class="tg-bgboxtwo"></div>
+				<div class="tg-bgpattrant">
+					<div class="container">
+						<div class="row">
+							<div class="tg-upcomingmatch-counter">
+								<div class="col-md-4 col-sm-4 col-xs-12 hidden-xs">
+									<figure>
+										<img src="<?php echo get_template_directory_uri(  ) . "/assets/images/img-02.png" ?>"alt="image description">
+									</figure>
+								</div>
+								<div class="col-md-8 col-sm-8 col-xs-12">
+									<div class="tg-contentbox">
+										<div class="tg-section-heading"><h2>Gladiators <span>VS</span> Horned Frogs</h2></div>
+										<div class="tg-description">
+											<p>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minimam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+										</div>
+										<div class="tg-counters">
+											<div class="tg-counter tg-days"></div>
+											<div class="tg-counter tg-hours"></div>
+											<div class="tg-counter tg-minutes"></div>
+											<div class="tg-counter tg-seconds"></div>
+										</div>
+										<div class="tg-btnbox">
+											<a class="tg-btn" href="#"><span>read more</span></a>
+											<a class="tg-btn" href="#"><span>book my ticket</span></a>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</section>
-
-<?php
-
-
-				// global $wpdb;
-				// $table_name = $wpdb->prefix . "next_games";
-				// #$current_date = current_time('Y-m-d');
-				// #$url = 'https://www.bfv.de/mannschaften/sv-riedmoos-ev/016PB2OPTC000000VV0AG811VTE5EA5Ra'; // Hier die gewünschte URL einfügen
-				// $next_game = $wpdb->get_row("
-				// 	SELECT *
-				// 	FROM $table_name
-				// 	ORDER BY datum ASC
-				// 	LIMIT 1
-				// " );
-
-				// // führe die Abfrage aus
-				// $next_game = $wpdb->get_row($next_game_query);
-
-				// // überprüfe, ob ein Termin gefunden wurde
-				// if ($next_game) {
-
-				// } else {
-				// 	// Füge hier den Code ein, um anzuzeigen, dass kein Spiel gefunden wurde
-				// 	$liga = 'bfv';
-				// 	$team0 = 'svr';
-				// 	$team1 = 'svl';
-				// 	$location = 'heim';
-				// 	$datum = '12.23.23';
-				// 	$uhrzeit = '19:00';
-				// }
-				// echo $table_name;
-				// echo $url;
-				// echo $team0;
-				// echo $team1;
-				// echo $datum;
-				// echo $uhrzeit;
-				// echo $location;
-			?>
-
+			</section>
 			<!--************************************
 					Upcoming Match End
 			*************************************-->
-
 			<section class="tg-main-section tg-haslayout">
 				<div class="container">
 					<div class="tg-section-name">
