@@ -484,16 +484,14 @@
 			<?php
 				global $wpdb;
 				$table_name = $wpdb->prefix . "next_games";
-				$current_date = current_time('Y-m-d');
-				$url = 'https://www.bfv.de/mannschaften/sv-riedmoos-ev/016PB2OPTC000000VV0AG811VTE5EA5Ra'; // Hier die gewünschte URL einfügen
+				#$current_date = current_time('Y-m-d');
+				#$url = 'https://www.bfv.de/mannschaften/sv-riedmoos-ev/016PB2OPTC000000VV0AG811VTE5EA5Ra'; // Hier die gewünschte URL einfügen
 				$next_game = $wpdb->get_row("
 					SELECT *
 					FROM $table_name
-					WHERE url = %s
-					WHERE datum >= '$current_date'
 					ORDER BY datum ASC
 					LIMIT 1
-				", $url );
+				" );
 
 				// führe die Abfrage aus
 				$next_game = $wpdb->get_row($next_game_query);
